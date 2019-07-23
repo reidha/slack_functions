@@ -2,9 +2,13 @@
 
 ```
 docker build -t sf .
-docker run --name sf -e SLACK_USER_TOKEN=XXX -e SLACK_USER_ID=XXX -it sf sh
+docker run --name sf -e SLACK_USER_TOKEN=XXX -e SLACK_USER_ID=XXX -it sf
+docker run --name sf -e SLACK_USER_TOKEN=XXX -e SLACK_USER_ID=XXX -dit sf sh
 docker ps -a
 docker rm -f sf
+
+docker start sf
+docker exec -it sf sh
 ```
 
 # Reference

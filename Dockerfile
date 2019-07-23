@@ -2,13 +2,14 @@ FROM alpine:latest
 
 WORKDIR /root
 
-ADD requirements.txt requirements.txt
-ADD src src
+COPY requirements.txt requirements.txt
+COPY src src
 
 RUN set -x && \
     apk update && \
     apk add python3 && \
     pip3 install --upgrade pip && \
-    pip3 install -r requirements.txt
+    pip3 install -r requirements.txt && \
+    mkdir /var/run/sf
 
-CMD /bin/sh
+CMD ["python3", "src/main.py"]
